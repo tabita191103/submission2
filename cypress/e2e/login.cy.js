@@ -5,6 +5,7 @@
  *   - should display alert when password is empty
  *   - should display alert when email and password are wrong
  *   - should display homepage when email and password are correct
+ *   - contoh gagal (untuk uji CI)
  */
 
 describe('Login spec', () => {
@@ -60,10 +61,10 @@ describe('Login spec', () => {
 
   it('should display homepage when email and password are correct', () => {
     // mengisi username
-    cy.get('input[placeholder="email@example.com"]').type('abdullah@dicoding.com');
+    cy.get('input[placeholder="email@example.com"]').type('tabita@dicoding.com');
  
     // mengisi password
-    cy.get('input[placeholder="enter your password"]').type('abdullah');
+    cy.get('input[placeholder="enter your password"]').type('tabita19');
  
     // menekan tombol Login
     cy.get('button').contains(/^Login$/).click();
@@ -74,5 +75,11 @@ describe('Login spec', () => {
     // Menekan tombol dropdown untuk melihat menu Sign out
     cy.get('.nav-profile').click();
     cy.get('.dropdown-item').contains(/^Sign out$/).should('be.visible');
+  });
+
+  // 🧨 Test tambahan untuk memicu CI gagal
+  it('contoh gagal', () => {
+    // Tes ini sengaja dibuat gagal agar CI menampilkan status failed
+    expect(true).to.equal(false);
   });
 });
